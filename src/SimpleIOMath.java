@@ -1,7 +1,7 @@
 /**
  * Lab 01.01: ABC-123 Assignment
  * @author 26lee@da.org
- * @version 09.14.2025
+ * @version 09.17.2025
  */
 
 import java.util.Scanner;
@@ -12,14 +12,14 @@ import java.util.Scanner;
 public class SimpleIOMath {
     private String name;
     private int age;
-    private int favNumber;
+    private String favNumber;
 
     public void promptUser() {
         Scanner in = new Scanner(System.in);
 
         System.out.println(
                 "* Sit yourself down, take a seat *\n" +
-                "* All you gotta do is repeat after me *");
+                        "* All you gotta do is repeat after me *");
 
         while(true) {
             try {
@@ -44,32 +44,33 @@ public class SimpleIOMath {
         while (true) {
             try {
                 System.out.print("Question 2: What is your age? ");
-                age = in.nextInt();
+                String line = in.nextLine().trim();
+                age = Integer.parseInt(line);
 
                 if (age < 1 || age > 150) {
-                    System.out.println("Invalid age. Must be 0–150.");
+                    System.out.println("Invalid age. Must be 1–150.");
                 } else {
                     break;
                 }
             } catch (Exception e) {
-                System.out.println("Invalid input. Try again.");
-                in.nextLine();
+                System.out.println("Invalid input. Please enter an integer.");
             }
         }
 
         while (true) {
             try {
                 System.out.print("Question 3: What is your favorite number? ");
-                favNumber = in.nextInt();
+                favNumber = in.nextLine().trim();
 
-                if (favNumber < -1000000 || favNumber > 1000000) {
-                    System.out.println("Number too large/small.");
+                if (favNumber.equalsIgnoreCase("pi")) {
+                    favNumber = String.valueOf(Math.PI);
+                    break;
                 } else {
+                    Double.parseDouble(favNumber);
                     break;
                 }
             } catch (Exception e) {
                 System.out.println("Invalid input. Try again.");
-                in.nextLine();
             }
         }
     }
@@ -80,10 +81,10 @@ public class SimpleIOMath {
      * @return smallest prime factor or number if prime
      */
     private int primeFactor(int number) {
-      for  (int i = 2; i <= Math.sqrt(number); i += 2) {
-          if (number % i == 0)
-              return i;
-          }
+        for  (int i = 2; i <= Math.sqrt(number); i += 2) {
+            if (number % i == 0)
+                return i;
+        }
 
         return number;
     }
@@ -102,12 +103,12 @@ public class SimpleIOMath {
 
         System.out.println(
                 "Your name is: " + name
-                + "\nYour age is: " + age
-                + "\nAt your next birthday, you will turn " + (age+1)
-                + "\nThe first prime factor of " + age + " is " + primeFactor(age)
-                + "\nYour favorite number is: " + favNumber
-                + "\nYour favorite number squared is: " + Math.round(Math.pow(favNumber, 2))
-                + "\n* end of program *"
+                        + "\nYour age is: " + age
+                        + "\nAt your next birthday, you will turn " + (age+1)
+                        + "\nThe first prime factor of " + age + " is " + primeFactor(age)
+                        + "\nYour favorite number is: " + favNumber
+                        + "\nYour favorite number squared is: " + Math.round(Math.pow(Double.parseDouble(favNumber), 2))
+                        + "\n* end of program *"
 
         );
     }
