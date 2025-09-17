@@ -7,7 +7,7 @@
 import java.util.Scanner;
 
 /**
- *
+ * Class SimpleIOMath takes user input and performs basic math operations.
  */
 public class SimpleIOMath {
     private String name;
@@ -74,6 +74,11 @@ public class SimpleIOMath {
         }
     }
 
+    /**
+     * Computes the first prime factor of a number
+     * @param number to factorize
+     * @return smallest prime factor or number if prime
+     */
     private int primeFactor(int number) {
       for  (int i = 2; i <= Math.sqrt(number); i += 2) {
           if (number % i == 0)
@@ -84,7 +89,7 @@ public class SimpleIOMath {
     }
 
     /**
-     *
+     * Prints user info and does some math. Output includes lyrics, name, age, and favorite number
      */
     public void printInfo() {
         System.out.println(
